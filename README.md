@@ -35,11 +35,11 @@ From your command line:
 ```bash
 $ git clone 
 ```
-1. Go into the directory which you want to execute. The first directories you see since you entered the cloned repository are where you can run the project to view results on the screen.
+2. Go into the directory which you want to execute. The first directories you see since you entered the cloned repository are where you can run the project to view results on the screen.
 ```bash
 $ cd 01_toolbar
 ```
-1. Run a project with node
+3. Run a project with node
 ```bash
 $ node start
 ```
