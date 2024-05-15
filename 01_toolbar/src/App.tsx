@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import ProjectsPage from './pages/HomePage';
 import './App.css';
 
