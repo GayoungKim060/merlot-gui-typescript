@@ -11,6 +11,71 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Button, Typography, Toolbar, Box, AppBar, Alert } from "@mui/material";
 import styled from 'styled-components';
 
+function AlertMessage({ text }: { text: string }) {
+  return (
+    <HeadContainer>
+      {text && <Alert severity={text.includes("Add") ? "success" : text.includes("Edit") ? "info" : "error"}>{text}</Alert>}
+    </HeadContainer>
+  );
+}
+
+function HomePage() {
+  const [alertText, setAlertText] = useState("");
+
+  const handleAddLocationClick = () => {
+    setAlertText("Add Light");
+    setTimeout(() => {
+      setAlertText("");
+    }, 2000); // 2초 후에 alertText를 비움
+  };
+
+  const handleEditLocationClick = () => {
+    setAlertText("Edit Location of Light");
+    setTimeout(() => {
+      setAlertText("");
+    }, 2000); // 2초 후에 alertText를 비움
+  };
+
+  const handleDeleteForeverClick = () => {
+    setAlertText("Delete Light Forever");
+    setTimeout(() => {
+      setAlertText("");
+    }, 2000); // 2초 후에 alertText를 비움
+  };
+
+
+  return (
+    <div className="App"> 
+      <Box sx={{ flexGrow: 1 }}> 
+        <StyledAppBar position="static"> 
+          <StyledToolbar disableGutters={true}> 
+            <Typography> 
+              Toolbar
+            </Typography> 
+            <IconsContainer>
+              <div aria-label="add location" onClick={handleAddLocationClick}>
+                <AddLocationIcon />
+              </div>
+              <div aria-label="edit location" onClick={handleEditLocationClick}>
+                <EditLocationAltIcon />
+              </div>
+              <div aria-label="delete forever" onClick={handleDeleteForeverClick}>
+                <DeleteForeverIcon />
+              </div>
+            </IconsContainer>
+            <Button color="inherit">Right</Button> 
+          </StyledToolbar> 
+        </StyledAppBar> 
+      </Box> 
+      <HeadContainer> 
+        <AlertMessage text={alertText} />
+      </HeadContainer> 
+    </div> 
+  );
+}
+
+export default HomePage;
+
 const StyledAppBar = styled(AppBar)`
   position: static;
   background-color: #2F2E34; /* success color */
@@ -83,68 +148,3 @@ const HeadContainer = styled.div`
   }
 
 `;
-
-function AlertMessage({ text }: { text: string }) {
-  return (
-    <HeadContainer>
-      {text && <Alert severity={text.includes("Add") ? "success" : text.includes("Edit") ? "info" : "error"}>{text}</Alert>}
-    </HeadContainer>
-  );
-}
-
-function HomePage() {
-  const [alertText, setAlertText] = useState("");
-
-  const handleAddLocationClick = () => {
-    setAlertText("Add Light");
-    setTimeout(() => {
-      setAlertText("");
-    }, 2000); // 2초 후에 alertText를 비움
-  };
-
-  const handleEditLocationClick = () => {
-    setAlertText("Edit Location of Light");
-    setTimeout(() => {
-      setAlertText("");
-    }, 2000); // 2초 후에 alertText를 비움
-  };
-
-  const handleDeleteForeverClick = () => {
-    setAlertText("Delete Light Forever");
-    setTimeout(() => {
-      setAlertText("");
-    }, 2000); // 2초 후에 alertText를 비움
-  };
-
-
-  return (
-    <div className="App"> 
-      <Box sx={{ flexGrow: 1 }}> 
-        <StyledAppBar position="static"> 
-          <StyledToolbar disableGutters={true}> 
-            <Typography> 
-              Toolbar
-            </Typography> 
-            <IconsContainer>
-              <div aria-label="add location" onClick={handleAddLocationClick}>
-                <AddLocationIcon />
-              </div>
-              <div aria-label="edit location" onClick={handleEditLocationClick}>
-                <EditLocationAltIcon />
-              </div>
-              <div aria-label="delete forever" onClick={handleDeleteForeverClick}>
-                <DeleteForeverIcon />
-              </div>
-            </IconsContainer>
-            <Button color="inherit">Right</Button> 
-          </StyledToolbar> 
-        </StyledAppBar> 
-      </Box> 
-      <HeadContainer> 
-        <AlertMessage text={alertText} />
-      </HeadContainer> 
-    </div> 
-  );
-}
-
-export default HomePage;
