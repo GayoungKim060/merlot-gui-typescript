@@ -11,6 +11,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Button, Typography, Toolbar, Box, AppBar, Alert } from "@mui/material";
 import styled from 'styled-components';
 
+/*
 function AlertMessage({ text }: { text: string }) {
   return (
     <HeadContainer>
@@ -18,8 +19,21 @@ function AlertMessage({ text }: { text: string }) {
     </HeadContainer>
   );
 }
+*/
+const AlertMessage = ({ text }: { text: string }) => {
+  return (
+    <HeadContainer>
+      {text && (
+        <Alert severity={text.includes("Add") ? "success" : text.includes("Edit") ? "info" : "error"}>
+          {text}
+        </Alert>
+      )}
+    </HeadContainer>
+  );
+};
 
-function HomePage() {
+
+const HomePage = () => {
   const [alertText, setAlertText] = useState("");
 
   const handleAddLocationClick = () => {
